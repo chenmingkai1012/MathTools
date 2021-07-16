@@ -1,0 +1,49 @@
+load_katex=function(){
+	WebFontConfig={
+		custom:{
+			families:[
+				'KaTeX_AMS',
+				'KaTeX_Caligraphic:n4,n7',
+				'KaTeX_Fraktur:n4,n7',
+				'KaTeX_Main:n4,n7,i4,i7',
+				'KaTeX_Math:i4,i7',
+				'KaTeX_Script',
+				'KaTeX_SansSerif:n4,n7,i4',
+				'KaTeX_Size1',
+				'KaTeX_Size2',
+				'KaTeX_Size3',
+				'KaTeX_Size4',
+				'KaTeX_Typewriter',
+			]
+		}
+	};
+};
+render_katex=function(katex_str,node){
+	katex.render(katex_str,node,{
+		displayMode:true,
+		leqno:false,
+		fleqn:false,
+		throwOnError:false,
+		errorColor:'#cc0000',
+		strict:'warn',
+		output:'htmlAndMathml',
+		trust:false,
+	});
+};
+//---
+changemode=function(){
+	(changemodeshow=!changemodeshow)&&($('#changemodes').show(),$('#modeicon').css('transform','rotate(180deg)'))||($('#changemodes').hide(),$('#modeicon').css('transform',''));
+}
+//---
+load_index=function(){
+	$('#mode').text('请选择模式');
+	$('#main').append('<div style="text-align:center;"><h1>欢迎使用Math Tools!</h1><p>请在右上角选择模式吧:D</p></div>');
+};
+//---
+load=function(){
+	((a=location.href.indexOf('#'))==-1||(b=['index'].indexOf(location.href.substr(a+1)))==-1)&&(location.href='#index',b=0);
+	$('body').empty(),$('body').append('<div id="top"><span id="top-left">Math Tools</span><span id="top-right" onclick="changemode();"><span id="mode"></span><svg id="modeicon" height="10" width="10"><polygon points="0,0 10,0 5,9" style="fill:black" /></svg><div id="changemodes"></div></span></div><div id="main"></div><div id="bottom">&copy;2021'+((y=new Date().getFullYear())>2021?'~'+y:'')+' - cmk666</div>');
+	changemodeshow=false,$('#changemodes').hide();
+	[load_index][b]();
+};
+$(load);

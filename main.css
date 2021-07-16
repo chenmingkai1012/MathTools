@@ -1,0 +1,50 @@
+*
+{
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+html, body
+{
+	width: 100%;
+	height: 100%;
+	font-family: 'Times New Roman';
+}
+div#top
+{
+	width: 100%;
+	height: 50px;
+	border-bottom: 2px solid black;
+}
+span#top-left
+{
+	display: inline-block;
+	width: 200px;
+	font-weight: bold;
+	font-size: 40px;
+	margin-left: 5px;
+}
+span#top-right
+{
+	display: inline-block;
+	width: calc(100% - 210px);
+	text-align: right;
+	cursor: pointer;
+	margin-right: 5px;
+}
+span#mode
+{
+	margin-right: 5px;
+}
+div#main
+{
+	width: 100%;
+	height: calc(100% - 74px);
+}
+div#bottom
+{
+	width: 100%;
+	height: 20px;
+	border-top: 2px solid black;
+	text-align: center;
+}
